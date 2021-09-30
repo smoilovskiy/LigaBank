@@ -1,7 +1,7 @@
 import { Fragment } from "react"
-import LogoContainer from "./logoContainer"
-import MenuContainer from "./menuContainer"
-import UserAuthContainer from "./userAuthContainer"
+import LogoContainer from "../logoContainer/logoContainer"
+import MenuContainer from "../menuContainer/menuContainer"
+import UserAuthContainer from "../userAuthContainer/userAuthContainer"
 
 
 const styles = {
