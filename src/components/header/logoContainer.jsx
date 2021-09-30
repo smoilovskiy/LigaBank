@@ -4,29 +4,26 @@ import { Fragment } from "react"
 const styles = {
   div: {
     display: 'flex',
-    justifyContent: 'space-between',
+    // justifyContent: 'space-between',
     alignItems: 'center',
-    width: '1366px',
+    // width: '1366px',
     height: '90px',
     margin: '0 auto',
+    border: '1px solid red',
   },
   // input: {
   //   marginRight: '1rem'
   // }
 }
 
-const Header = () => {
+const LogoContainer = () => {
   return (
     <Fragment>
       <div style={styles.div}>
-        <h1>Div1</h1>
-        <h1>Div2</h1>
-        <h1>Div3</h1>
-        <h1>Div4</h1>
 
       </div>
     </Fragment>
   );
 };
 
-export default Header;
+export default LogoContainer;
