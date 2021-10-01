@@ -1,0 +1,25 @@
+.header__login {
+  margin-right: 98px;
+  display: flex;
+  align-items: center;
+}
+
+.header__login-link {
+  text-decoration: none;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  color: #1F1E25;
+}
+
+.header__login-img {
+  width: 20px;
+  height: 22px;
+  margin-right: 10px;
+}
+
+.header__login-link-text {
+  padding-bottom: 10px;
+}

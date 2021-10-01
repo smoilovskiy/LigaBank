@@ -1,28 +1,15 @@
 import { Fragment } from "react"
-import LogoContainer from "../logoContainer/logoContainer"
-import MenuContainer from "../menuContainer/menuContainer"
-import UserAuthContainer from "../userAuthContainer/userAuthContainer"
+import LogoContainer from "./view/logo/logo"
+import MenuContainer from "./view/menu/menu"
+import UserAuthContainer from "./view/login/login"
+import './header.scss'
 
 
-const styles = {
-  div: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '1366px',
-    height: '90px',
-    margin: '0 auto',
-    border: '1px solid red',
-  },
-  // input: {
-  //   marginRight: '1rem'
-  // }
-}
 
 const Header = () => {
   return (
     <Fragment>
-      <div style={styles.div}>
+      <div className='header'>
         <LogoContainer />
         <MenuContainer />
         <UserAuthContainer />
