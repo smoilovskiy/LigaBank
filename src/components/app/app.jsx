@@ -1,12 +1,14 @@
 import React, { Fragment } from 'react';
 import Header from '../header/header';
-//import './src/sass/style.scss';
+import Main from '../main/main';
 
 
-const App = () => {
+
+function App() {
   return (
     <Fragment>
       <Header />
+      <Main />
 
     </Fragment>
   );

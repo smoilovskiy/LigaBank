@@ -1,7 +1,6 @@
 import { Fragment } from "react"
 import Slider from "../slider/slider";
 
-
 function Main() {
   return (
     <Fragment>
