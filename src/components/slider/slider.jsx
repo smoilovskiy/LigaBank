@@ -1,63 +1,19 @@
-// Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
-import 'swiper/css';
-
-function Slider() {
-  return (
-    <Swiper
-      spaceBetween={50}
-      slidesPerView={3}
-      onSlideChange={() => console.log('slide change')}
-      onSwiper={(swiper) => console.log(swiper)}
-    >
-      <SwiperSlide>Slide 1</SwiperSlide>
-      <SwiperSlide>Slide 2</SwiperSlide>
-      <SwiperSlide>Slide 3</SwiperSlide>
-      <SwiperSlide>Slide 4</SwiperSlide>
-      ...
-    </Swiper>
-  );
-};
-
-export default Slider;
+import React from "react";
+import { Carousel } from "react-responsive-carousel";
+import './slider.scss'
 
 
-
-// // import Swiper core and required modules
-// import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
-
-// import { Swiper, SwiperSlide } from 'swiper/react';
-
-// // Import Swiper styles
-// import 'swiper/css';
-// import 'swiper/css/navigation';
-// import 'swiper/css/pagination';
-// import 'swiper/css/scrollbar';
-
-// function Slider() {
-//   return (
-//     <Swiper
-//       // install Swiper modules
-//       modules={[Navigation, Pagination, Scrollbar, A11y]}
-//       spaceBetween={50}
-//       slidesPerView={3}
-//       navigation
-//       pagination={{ clickable: true }}
-//       scrollbar={{ draggable: true }}
-//       onSwiper={(swiper) => console.log(swiper)}
-//       onSlideChange={() => console.log('slide change')}
-//     >
-//       <SwiperSlide>Slide 1</SwiperSlide>
-//       <SwiperSlide>Slide 2</SwiperSlide>
-//       <SwiperSlide>Slide 3</SwiperSlide>
-//       <SwiperSlide>Slide 4</SwiperSlide>
-//       ...
-//     </Swiper>
-//   );
-// };
-
-// export default Slider;
-
-
+// eslint-disable-next-line import/no-anonymous-default-export
+export default () => (
+  <Carousel autoPlay>
+    <div className='slide1'>
+      <img alt="slide1" src="" />
+    </div>
+    <div className='slide2'>
+      <img alt="slide2" src="img/slide2-bg.jpg" />
+    </div>
+    <div className='slide3'>
+      <img alt="slide3" src="img/slide3-bg.jpg" />
+    </div>
+  </Carousel>
+);

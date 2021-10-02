@@ -1,4 +1,6 @@
 import { Fragment } from "react"
+import './main.scss'
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Slider from "../slider/slider";
 
 function Main() {
@@ -6,6 +8,9 @@ function Main() {
     <Fragment>
       <div className='main'>
         <Slider />
+        {/* <div className='tempslider'> */}
+
+        {/* </div> */}
 
       </div>
     </Fragment>
