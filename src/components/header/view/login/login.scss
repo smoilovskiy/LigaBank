@@ -1,7 +1,6 @@
 .header__login {
-  margin-right: 98px;
+  margin-right: 108px;
   display: flex;
-  align-items: center;
 }
 
 .header__login-link {
@@ -15,10 +14,13 @@
 
 .header__login-img {
   width: 20px;
-  height: 22px;
+  height: 22px;  
+  position: absolute;
   margin-right: 10px;
 }
 
 .header__login-link-text {
-  padding-bottom: 10px;
+  position: relative;
+  left: 30px;
+  top: 2px;
 }

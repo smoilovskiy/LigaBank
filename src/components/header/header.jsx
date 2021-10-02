@@ -1,17 +1,22 @@
 import { Fragment } from "react"
 import LogoContainer from "./view/logo/logo"
-import MenuContainer from "./view/menu/menu"
+import MenuList from "./view/menu/menu"
 import UserAuthContainer from "./view/login/login"
 import './header.scss'
 
+const menuItems = [
+  { item: 'Услуги', key: 1, path: '##' },
+  { item: 'Рассчитать кредит', key: 2, path: '##' },
+  { item: 'Конвертер валют', key: 3, path: '##' },
+  { item: 'Контакты', key: 4, path: '##' },
+];
 
-
-const Header = () => {
+function Header() {
   return (
     <Fragment>
       <div className='header'>
         <LogoContainer />
-        <MenuContainer />
+        <MenuList menuItems={menuItems} />
         <UserAuthContainer />
 
       </div>
