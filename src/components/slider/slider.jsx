@@ -6,7 +6,7 @@ import './slider.scss'
 // eslint-disable-next-line import/no-anonymous-default-export
 export default () => (
   <Carousel
-    autoPlay={false}
+    autoPlay={true}
     showStatus={false}
     showThumbs={false}
   >
