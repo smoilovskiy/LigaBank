@@ -8,9 +8,6 @@ function Main() {
     <Fragment>
       <div className='main'>
         <Slider />
-        {/* <div className='tempslider'> */}
-
-        {/* </div> */}
 
       </div>
     </Fragment>

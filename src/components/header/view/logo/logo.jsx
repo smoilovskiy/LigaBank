@@ -2,7 +2,7 @@ import { Fragment } from "react"
 import './logo.scss'
 
 
-export default function LogoContainer() {
+function LogoContainer() {
   return (
     <Fragment>
       <div className='header__logo'>
@@ -12,3 +12,5 @@ export default function LogoContainer() {
     </Fragment>
   );
 };
+
+export default LogoContainer;
