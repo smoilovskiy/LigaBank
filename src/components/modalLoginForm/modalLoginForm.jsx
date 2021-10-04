@@ -1,8 +1,21 @@
-import { Fragment } from "react"
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { Fragment } from "react";
 import './modalLoginForm.scss'
 
 
 function ModalLoginForm() {
+  const [passwordShown, setPasswordShown] = useState(false);
+  const togglePasswordVisiblity = () => {
+    setPasswordShown(passwordShown ? false : true);
+  };
+
+  const { register, handleSubmit } = useForm();
+  const onSubmit = data => {
+    console.log(data);
+  };
+
+
   return (
     <Fragment>
       <div className="modal-login__background">
@@ -16,7 +29,7 @@ function ModalLoginForm() {
 
 
             <a className="close-cross" href="##">
-              <img class="close-cross__image" src="img/icon/close-cross.svg" alt="close-cross" />
+              <img className="close-cross__image" src="img/icon/close-cross.svg" alt="close-cross" />
             </a>
 
 
@@ -24,12 +37,14 @@ function ModalLoginForm() {
 
               <label className="modal-login__login-label">Логин
                 <input className="modal-login__login-input" type="text" name="login" />
+                {/* ref={register({ required: "This is required." })} */}
               </label>
 
-              <div class="modal-login__password">
+              <div className="modal-login__password">
                 <label className="modal-login__password-label">Пароль
                   <input className="modal-login__password-input" type="text" name="password" />
-                  <span className="eye-closed"></span>
+                  {/* ref={register({ required: "This is required." })} */}
+                  <span className="eye-closed" onClick={togglePasswordVisiblity}></span>
                 </label>
               </div>
 
@@ -37,7 +52,7 @@ function ModalLoginForm() {
                 <p className="pass-forget__text">Забыли пароль?</p>
               </a>
 
-              <button class="modal-login__button" href="##">Войти</button>
+              <button className="modal-login__button" type="submit" href="##" onClick={handleSubmit(onSubmit)}>Войти</button>
 
             </form>
           </div>
