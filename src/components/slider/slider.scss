@@ -10,13 +10,13 @@
   ;
 }
 
-.slide1-inner {
+.slide1__inner {
   // width: 866px;
   height: 240px;
   position: relative;
 }
 
-.slide1-img1-container {
+.slide1__container--img1 {
   width: 320px;
   height: 182px;
   position: absolute;
@@ -24,7 +24,7 @@
   right: -20px;
 }
 
-.slide1-img2-container {
+.slide1__container--img2 {
   width: 320px;
   height: 182px;
   position: absolute;
@@ -32,7 +32,7 @@
   right: 80px;
 }
 
-.slide1-title {
+.slide1__title {
   margin: 0;
   position: absolute;
   top: 10px;
@@ -45,7 +45,7 @@
   color: #F6F7FF;
 }
 
-.slide1-subtitle {
+.slide1__subtitle {
   margin: 0;
   position: absolute;
   top: 80px;
@@ -58,7 +58,7 @@
   color: #E0E1EA;
 }
 
-.slide1-link {
+.slide1__link {
   position: absolute;
   top: 150px;
   left: 0;
@@ -86,7 +86,7 @@
   height: 400px;
 }
 
-.slide2-title {
+.slide2__title {
   margin: 0;
   position: absolute;
   top: 100px;
@@ -99,7 +99,7 @@
   color: #1F1E25;
 }
 
-.slide2-subtitle {
+.slide2__subtitle {
   margin: 0;
   position: absolute;
   top: 180px;
@@ -118,7 +118,7 @@
   height: 400px;
 }
 
-.slide3-title {
+.slide3__title {
   margin: 0;
   position: absolute;
   top: 100px;
@@ -131,7 +131,7 @@
   color: #1F1E25;
 }
 
-.slide3-subtitle {
+.slide3__subtitle {
   margin: 0;
   position: absolute;
   top: 180px;
@@ -144,7 +144,7 @@
   color: #2B3C4F;
 }
 
-.slide3-link {
+.slide3__link {
   position: absolute;
   top: 240px;
   left: 268px;
