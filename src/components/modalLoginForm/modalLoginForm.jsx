@@ -42,7 +42,7 @@ function ModalLoginForm() {
 
               <div className="modal-login__password">
                 <label className="modal-login__password-label">Пароль
-                  <input className="modal-login__password-input" type="text" name="password" />
+                  <input className="modal-login__password-input" type={passwordShown ? "text" : "password"} name="password" />
                   {/* ref={register({ required: "This is required." })} */}
                   <span className="eye-closed" onClick={togglePasswordVisiblity}></span>
                 </label>
