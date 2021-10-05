@@ -13,4 +13,4 @@ function LogoContainer() {
   );
 };
 
-export default LogoContainer;
+export default LogoContainer

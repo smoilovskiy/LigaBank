@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import Header from '../header/header';
 import Main from '../main/main';
-import ModalLoginForm from '../modalLoginForm/modalLoginForm'
+
 
 
 
@@ -10,7 +10,7 @@ function App() {
     <Fragment>
       <Header />
       <Main />
-      <ModalLoginForm />
+
 
     </Fragment>
   );
