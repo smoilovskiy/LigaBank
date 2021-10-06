@@ -1,0 +1,40 @@
+.tabs-container {
+  width: 1170px;
+  height: 503px;
+  margin: 60px auto;
+}
+
+.tabs-selector {
+  display: flex;  
+}
+
+.tab-select {
+  width: 293px;
+  height: 93px;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 4px 4px 0px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deposits-tab__title {
+
+}
+
+.tab-container {
+  width: 1170px;
+  height: 410px;
+  background-color: #F6F7FF;
+  margin: auto;
+  position: relative;
+  
+}
+
+.tab-img {
+  position: absolute;
+  top: 60px;
+  right: 135px;
+}
+

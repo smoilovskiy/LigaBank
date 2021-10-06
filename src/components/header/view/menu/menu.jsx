@@ -5,9 +5,9 @@ import './menu.scss'
 function MenuList(props) {
   const menuItems = props.menuItems;
   const listItems = menuItems.map((menuItem) =>
-
     <ListItem key={menuItem.key} value={menuItem.item} path={menuItem.path} />
   );
+  
   return (
     <ul className='menu__list'>
       {listItems}
