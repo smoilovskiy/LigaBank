@@ -19,8 +19,24 @@
   justify-content: center;
 }
 
-.deposits-tab__title {
+.tab-select__title {
+  position: relative;
+}
 
+.tab-select__title-text {
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 40px;  
+  color: #1F1E25;
+}
+
+.tab-select__title-img {
+  position: absolute;
+  top: 0;
+  left: -40px;
 }
 
 .tab-container {
@@ -29,12 +45,144 @@
   background-color: #F6F7FF;
   margin: auto;
   position: relative;
-  
+
 }
 
 .tab-img {
   position: absolute;
   top: 60px;
   right: 135px;
+}
+
+.tab__text-big {
+  margin: 0;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 31px;
+  color: #1F1E25;
+}
+
+.tab__text-small {
+  margin: 0;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 23px;
+  color: #1F1E25;
+}
+
+.tab__link {
+  position: absolute;
+  top: 328px;
+  left: 128px;
+  margin: 0;
+  text-decoration: underline;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 25px;
+  color: #1F1E25;
+}
+
+.tab__link-bttn {
+  position: absolute;
+  bottom: 60px;
+  left: 60px;
+  background-color: #2C36F2;
+  border-radius: 4px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  line-height: 21px;
+  color: #F6F7FF;
+  padding: 18px 40px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.line1 {
+  position: absolute;
+  top: 60px;
+  left: 60px;
+}
+
+.line2 {
+  position: absolute;
+  top: 88px;
+  left: 60px;
+}
+
+.line3 {
+  position: absolute;
+  top: 135px;
+  left: 85px;
+}
+
+.line3-1 {
+  position: absolute;
+  top: 158px;
+  left: 85px;
+}
+
+.line4 {
+  position: absolute;
+  top: 175px;
+  left: 85px;
+}
+
+.line5 {
+  position: absolute;
+  top: 215px;
+  left: 85px;
+}
+
+.line6 {
+  position: absolute;
+  top: 238px;
+  left: 85px;
+}
+
+.line7 {
+  position: absolute;
+  top: 280px;
+  left: 60px;
+}
+
+.line8 {
+  position: absolute;
+  top: 305px;
+  left: 60px;
+}
+
+.line9 {
+  position: absolute;
+  top: 330px;
+  left: 60px;
+}
+
+.checkmark1 {
+  position: absolute;
+  top: 142px;
+  left: 60px;
+}
+
+.checkmark2 {
+  position: absolute;
+  top: 182px;
+  left: 60px;
+}
+
+.checkmark3 {
+  position: absolute;
+  top: 222px;
+  left: 60px;
 }
 
