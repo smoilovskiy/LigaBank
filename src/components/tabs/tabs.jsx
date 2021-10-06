@@ -26,7 +26,7 @@ const credits = <div className='tab-container'>
   <p className='tab__text-small line4'>Автокредит</p>
   <img className='checkmark-icon checkmark3' src='./img/icon/checkmark.svg' alt='checkmark-icon' />
   <p className='tab__text-small line5'>Потребительский кредит</p>
-  
+
   <p className='tab__text-small line7'>Рассчитайте ежемесячный платеж</p>
   <p className='tab__text-small line8'>и ставку по кредиту воспользовавшись</p>
   <p className='tab__text-small line9'>нашим</p>
@@ -72,9 +72,10 @@ function Tabs() {
   const activeTitleBg = { 'background': '#F6F7FF' }
 
   const activeTitle = tabsItems.map(tabsItem => (
-    <div className='tab-select' key={tabsItem.key} onClick={() => setActive(tabsItem.title)} style={tabsItem.title === active ? activeTitleBg : null}>
+    <div className='tab-select' key={tabsItem.key}
+      onClick={() => setActive(tabsItem.title)} style={tabsItem.title === active ? activeTitleBg : null}>
       <div className='tab-select__title'>
-        <img className='tab-select__title-img' src={tabsItem.imgUrl} alt={tabsItem.imgAlt} /> 
+        <img className='tab-select__title-img' src={tabsItem.imgUrl} alt={tabsItem.imgAlt} />
         <span className='tab-select__title-text'>{tabsItem.title}</span></div>
     </div>
   ))
@@ -92,5 +93,5 @@ function Tabs() {
     </Fragment>
   );
 }
-// Usage
+
 export default Tabs;
