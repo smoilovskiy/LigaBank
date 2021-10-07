@@ -5,13 +5,14 @@ import Slider from "../slider/slider";
 import Tabs from "../tabs/tabs";
 
 
+
+
 function Main() {
   return (
     <Fragment>
       <div className='main'>
         <Slider />
         <Tabs />
-
 
       </div>
     </Fragment>

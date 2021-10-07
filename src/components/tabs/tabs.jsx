@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Fragment } from 'react';
 import './tabs.scss'
 
-const deposits = <div className='tab-container'>
+const tabContent = [<div className='tab-container'>
   <p className='tab__text-big line1'>Вклады Лига Банка – это выгодная</p>
   <p className='tab__text-big line2'>инвестиция в свое будущее</p>
   <img className='checkmark-icon checkmark1' src='./img/icon/checkmark.svg' alt='checkmark-icon' />
@@ -17,7 +17,7 @@ const deposits = <div className='tab-container'>
   <img className='tab-img' src='./img/piggybank.jpg' alt='piggybank-img' />
 </div>
 
-const credits = <div className='tab-container'>
+  , <div className='tab-container'>
   <p className='tab__text-big line1'>Лига Банк выдает кредиты под</p>
   <p className='tab__text-big line2'>любые цели</p>
   <img className='checkmark-icon checkmark1' src='./img/icon/checkmark.svg' alt='checkmark-icon' />
@@ -33,7 +33,7 @@ const credits = <div className='tab-container'>
   <a className='tab__link' href='##'>кредитным калькулятором</a>
   <img className='tab-img' src='./img/car.jpg' alt='car-img' />
 </div>
-const insurance = <div className='tab-container'>
+  , <div className='tab-container'>
   <p className='tab__text-big line1'>Лига Страхование — застрахуем все</p>
   <p className='tab__text-big line2'>что захотите</p>
   <img className='checkmark-icon checkmark1' src='./img/icon/checkmark.svg' alt='checkmark-icon' />
@@ -45,7 +45,7 @@ const insurance = <div className='tab-container'>
   <a className='tab__link-bttn' href='##'>Узнать подробнее</a>
   <img className='tab-img' src='./img/lock.jpg' alt='lock-img' />
 </div>
-const onlineServices = <div className='tab-container'>
+  , <div className='tab-container'>
   <p className='tab__text-big line1'>Лига Банк — это огромное количество</p>
   <p className='tab__text-big line2'>онлайн-сервисов для вашего удобства</p>
   <img className='checkmark-icon checkmark1' src='./img/icon/checkmark.svg' alt='checkmark-icon' />
@@ -57,35 +57,45 @@ const onlineServices = <div className='tab-container'>
   <a className='tab__link-bttn' href='##'>Узнать подробнее</a>
   <img className='tab-img' src='./img/phone.jpg' alt='phone-img' />
 </div>
-
+]
 
 const tabsItems = [
-  { key: 1, title: 'Вклады', imgUrl: './img/icon/deposits.svg', imgAlt: 'deposits-icon', content: deposits },
-  { key: 2, title: 'Кредиты', imgUrl: './img/icon/credits.svg', imgAlt: 'credits-icon', content: credits },
-  { key: 3, title: 'Страхование', imgUrl: './img/icon/insurance.svg', imgAlt: 'insurance-icon', content: insurance },
-  { key: 4, title: 'Онлайн-сервисы', imgUrl: './img/icon/online-services.svg', imgAlt: 'onlineServices-icon', content: onlineServices },
+  { key: 1, title: 'Вклады', imgUrl: './img/icon/deposits.svg', imgAlt: 'deposits-icon', content: tabContent[0] },
+  { key: 2, title: 'Кредиты', imgUrl: './img/icon/credits.svg', imgAlt: 'credits-icon', content: tabContent[1] },
+  { key: 3, title: 'Страхование', imgUrl: './img/icon/insurance.svg', imgAlt: 'insurance-icon', content: tabContent[2] },
+  { key: 4, title: 'Онлайн-сервисы', imgUrl: './img/icon/online-services.svg', imgAlt: 'onlineServices-icon', content: tabContent[3] },
 ];
 
 
 function Tabs() {
+
   const [active, setActive] = useState(tabsItems[0].title);
-  const activeTitleBg = { 'background': '#F6F7FF' }
+  const [activeTab, setActiveTab] = useState(tabContent[0]);
+
+
+  const activeTitleBg = { 'background': '#F6F7FF' };
 
   const activeTitle = tabsItems.map(tabsItem => (
+
     <div className='tab-select' key={tabsItem.key}
       onClick={() => setActive(tabsItem.title)} style={tabsItem.title === active ? activeTitleBg : null}>
       <div className='tab-select__title'>
         <img className='tab-select__title-img' src={tabsItem.imgUrl} alt={tabsItem.imgAlt} />
-        <span className='tab-select__title-text'>{tabsItem.title}</span></div>
+        <span className='tab-select__title-text'>{tabsItem.title}</span>
+      </div>
     </div>
-  ))
+  ));
 
   return (
     <Fragment>
+
       <div className='tabs-container'>
         <div className='tabs-selector'>
           {activeTitle}
         </div>
+
+        {/* 
+        <RenderTabContent tabContent={tabContent}/> */}
 
         {tabsItems.find(tab => tab.title === active).content}
 
