@@ -20,11 +20,14 @@
 }
 
 .tab-select__title {
-  position: relative;
+
 }
 
 .tab-select__title-text {
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
@@ -34,9 +37,10 @@
 }
 
 .tab-select__title-img {
-  position: absolute;
-  top: 0;
-  left: -40px;
+  margin-right: 20px;
+  // position: absolute;
+  // top: 0;
+  // left: -40px;
 }
 
 .tab-container {
