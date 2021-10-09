@@ -2,6 +2,7 @@ import { Fragment } from "react"
 import LogoContainer from "./view/logo/logo"
 import MenuList from "./view/menu/menu"
 import CallUs from "./view/call-us/call-us"
+import SocialItems from './view/social-items/social-items'
 import './footer.scss'
 
 const menuItems = [
@@ -16,6 +17,13 @@ const callUs = [
   { iconUrl: './img/icon/phone.svg', phoneNumber: '8 800 111 22 33', text: 'Бесплатный для всех городов России' }
 ];
 
+const socialItems = [
+  { iconUrl: './img/icon/facebook.svg', iconAlt: 'facebook-icon', key: 1, path: '##' },
+  { iconUrl: './img/icon/instagram.svg', iconAlt: 'instagram-icon', key: 2, path: '##' },
+  { iconUrl: './img/icon/twitter.svg', iconAlt: 'twitter-icon', key: 3, path: '##' },
+  { iconUrl: './img/icon/youtube.svg', iconAlt: 'youtube-icon', key: 4, path: '##' }
+];
+
 function Footer() {
   return (
     <Fragment>
@@ -25,6 +33,7 @@ function Footer() {
           <MenuList menuItems={menuItems} />
           <CallUs callUs={callUs[0]} />
           <CallUs callUs={callUs[1]} />
+          <SocialItems socialItems={socialItems} />
         </div>
       </div>
     </Fragment>
