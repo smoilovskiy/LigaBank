@@ -14,6 +14,7 @@ function Tabs() {
 
   const [active, setActive] = useState(tabsItems[0].title);
   const [activeTab, setActiveTab] = useState(0);
+  
   const activeTitleBg = { 'background': '#F6F7FF' };
 
   const activeTitle = tabsItems.map(tabsItem => (
