@@ -24,6 +24,8 @@ const socialItems = [
   { iconUrl: './img/icon/youtube.svg', iconAlt: 'youtube-icon', key: 4, path: '##' }
 ];
 
+const callUsRender = callUs.map((el) => <CallUs callUs={el} />);
+
 function Footer() {
   return (
     <Fragment>
@@ -31,8 +33,7 @@ function Footer() {
         <div className='footer__inner'>
           <LogoContainer />
           <MenuList menuItems={menuItems} />
-          <CallUs callUs={callUs[0]} />
-          <CallUs callUs={callUs[1]} />
+          {callUsRender}
           <SocialItems socialItems={socialItems} />
         </div>
       </div>
