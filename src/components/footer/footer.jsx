@@ -13,8 +13,8 @@ const menuItems = [
 ];
 
 const callUs = [
-  { iconUrl: './img/icon/cell-phone.svg', phoneNumber: '*0904', text: 'Бесплатно для абонентов МТС, Билайн, Мегафон, Теле2' },
-  { iconUrl: './img/icon/phone.svg', phoneNumber: '8 800 111 22 33', text: 'Бесплатный для всех городов России' }
+  { iconUrl: './img/icon/cell-phone.svg', key: 1, phoneNumber: '*0904', text: 'Бесплатно для абонентов МТС, Билайн, Мегафон, Теле2' },
+  { iconUrl: './img/icon/phone.svg', key: 2, phoneNumber: '8 800 111 22 33', text: 'Бесплатный для всех городов России' }
 ];
 
 const socialItems = [
@@ -24,7 +24,7 @@ const socialItems = [
   { iconUrl: './img/icon/youtube.svg', iconAlt: 'youtube-icon', key: 4, path: '##' }
 ];
 
-const callUsRender = callUs.map((el) => <CallUs callUs={el} />);
+const callUsRender = callUs.map((el) => <CallUs callUs={el} key={el.key} />);
 
 function Footer() {
   return (
