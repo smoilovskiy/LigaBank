@@ -1,22 +1,81 @@
-import React from "react";
+import React, { useState } from 'react';
 import { Fragment } from "react"
-
 import './calculator.scss'
 
 
-function renderDropDown() {
-  return React.cloneElement(this.doRender(), {
-    style: {border: '1px solid red'}
-});
-  // credit-selector__drop-down.
-}
-
-
 function Calculator() {
+
   const step1 = 'Шаг 1. Цель кредита';
+  const step2 = 'Шаг 2. Введите параметры кредита';
+  const realEstateCost = 'Стоимость недвижимости';
+  const carCost = 'Стоимость автомобиля';
+
+  const mortgageCredit = 'Ипотечное кредитование';
+  const carCredit = 'Автомобильное кредитование';
+  const creditTargetTitle = 'Выберите цель кредита';
+
+  const [expanded, setExpanded] = useState(false);
+  const [creditType, setCreditType] = useState(creditTargetTitle);
 
 
+  function handlerExpandMenu() {
+    setExpanded(!expanded)
+  }
 
+  function handlerMortgageCredit() {
+    setExpanded(!expanded);
+    setCreditType(mortgageCredit);
+  }
+
+  function handlerCarCredit() {
+    setExpanded(!expanded)
+    setCreditType(carCredit);
+  }
+
+  const creditSelect = [
+    <div className='credit-selector-condensed'>
+      <p className='credit-selector__title'>{creditType}</p>
+      <img className='credit-selector__arrow'
+        src='./img/icon/arrow-down.svg'
+        alt='credit-selector-arrow'
+        onClick={handlerExpandMenu} >
+      </img>
+    </div>,
+    <div className='credit-selector-expanded-container'>
+      <div className='credit-selector-expanded'>
+        <p className='credit-selector__title'>{creditType}</p>
+        <img className='credit-selector__arrow'
+          src='./img/icon/arrow-up.svg'
+          alt='credit-selector-arrow'
+          onClick={handlerExpandMenu} >
+        </img>
+      </div>
+      <div className='mortgage-credit-lending'>
+        <p className='credit-selector__title--expanded' onClick={handlerMortgageCredit}>{mortgageCredit}</p>
+      </div>
+      <div className='car-credit-lending'>
+        <p className='credit-selector__title--expanded' onClick={handlerCarCredit}>{carCredit}</p>
+      </div>
+    </div>
+  ];
+
+  const creditParams = [
+    <div className='mortgage-credit-params'>
+      <p className='calculator__steps-text'>{step2}</p>
+      <p className='credit-params-subtitle'>{realEstateCost}</p>
+      <div className='credit-selector-condensed'>
+
+      </div>
+
+    </div>,
+    <div className='car-credit-params'>
+      <p className='calculator__steps-text'>{step2}</p>
+      <p className='credit-params-subtitle'>{carCost}</p>
+      <div className='credit-selector-condensed'>
+
+      </div>
+    </div>
+  ];
 
 
   return (
@@ -24,27 +83,11 @@ function Calculator() {
       <div className='calculator__container'>
         <h3 className='calculator__title'>Кредитный калькулятор</h3>
         <p className='calculator__steps-text'>{step1}</p>
+        {expanded === false ? creditSelect[0] : creditSelect[1]}
+        {creditType === creditTargetTitle ? null : creditType === mortgageCredit ? creditParams[0] : creditParams[1]}
 
-        <div className='credit-selector'>
-          <p className='credit-selector__title'>Выберите цель кредита</p>
-          <img className='credit-selector__arrow' src='./img/icon/arrow-down.svg' alt='credit-selector-arrow' onClick={renderDropDown}></img>
-        </div>
-        <div className='credit-selector__drop-down'>
-          <div className='mortgage-credit-lending'>
-
-          </div>
-          <div className='car-credit-lending'>
-
-          </div>
-        </div>
-
-
-        {/* <select className='step-selector'>
-          <option className='step-option-default' disabled selected>Выберите цель кредита</option>
-          <option className='step-option' value="mortgage-credit-lending">Ипотечное кредитование</option>
-          <option className='step-option' value="car-credit-lending">Автомобильное кредитование</option>
-        </select> */}
       </div>
+
     </Fragment>
   );
 };

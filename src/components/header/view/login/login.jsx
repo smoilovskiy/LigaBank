@@ -5,6 +5,7 @@ import './login.scss'
 function UserAuthContainer() {
   const [passwordShown, setPasswordShown] = useState(false);
   const [popupShown, setPopupShown] = useState(false);
+  
   function handlerPopupShown() {
     setPopupShown(!popupShown);
   }

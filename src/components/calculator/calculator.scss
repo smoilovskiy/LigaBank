@@ -34,8 +34,6 @@
   padding-left: 20px;
 }
 
-
-
 .step-option {
   font-family: 'Roboto';
   font-style: normal;
@@ -45,7 +43,7 @@
   color: #1F1E25;
 }
 
-.credit-selector {
+.credit-selector-condensed {
   width: 600px;
   height: 60px;
   border: 1px solid #1F1E25;
@@ -60,7 +58,17 @@
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
-  line-height: 60px;
+  line-height: 20px;
+  color: #1F1E25;
+  margin-left: 20px;
+}
+
+.credit-selector__title--expanded {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 20px;
   color: #1F1E25;
   margin-left: 20px;
 }
@@ -69,13 +77,43 @@
   margin-right: 20px;
 }
 
-.mortgage-credit-lending,
+.credit-selector-expanded-container {
+  width: 600px;
+  height: 180px;
+  border: 1px solid #1F1E25;
+  border-radius: 4px;
+  display: block;
+}
+
+.credit-selector-expanded {
+  width: 600px;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mortgage-credit-lending {
+  width: 600px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #0A1E32;
+}
+
 .car-credit-lending {
   width: 600px;
   height: 60px;
-  border: 1px solid #1F1E25;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #C1C2CA;
 }
 
-.credit-selector__drop-down {
-  display: none;
+.credit-params-subtitle {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  color: #394959;
 }
