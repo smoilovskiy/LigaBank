@@ -1,6 +1,7 @@
 .calculator__container {
   margin: 0 auto;
   width: 1170px;
+  position: relative;
 }
 
 .calculator__title {
@@ -77,6 +78,10 @@
   margin-right: 20px;
 }
 
+.credit-selector__arrow:hover {
+  cursor: pointer;
+}
+
 .credit-selector-expanded-container {
   width: 600px;
   height: 180px;
@@ -109,6 +114,11 @@
   border-top: 1px solid #C1C2CA;
 }
 
+.mortgage-credit-lending:hover,
+.car-credit-lending:hover {
+  cursor: pointer;
+}
+
 .credit-params-subtitle {
   font-family: 'Roboto';
   font-style: normal;
@@ -126,13 +136,94 @@
   margin-right: 20px;
 }
 
+.minus-img:hover,
+.plus-img:hover {
+  cursor: pointer;
+}
+
 .credit-cost {
+  width: 100px;
   border: none;
-  width: fit-content;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
   line-height: 25px;
   color: #1F1E25;
+}
+
+.credit-cost:focus {
+  border: none;
+
+}
+
+.credit-cost-container {
+  display: flex;
+  height: 20px;
+}
+
+.credit-cost-currency {
+  height: 20px;
+  margin: 0;
+  border: none;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 25px;
+  color: #1F1E25;
+} 
+
+.credit-cost-range {
+  margin-top: 5px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  color: #707C87;
+}
+
+.our-offer {
+  position: absolute;
+  right: 0;
+  top: 100px;
+  background: #F6F7FF;
+  border-radius: 4px;
+  width: 500px;
+  height: 389px;
+  // padding: 60px;
+}
+
+.our-offer__inner {
+  margin: 60px;
+}
+
+.our-offer__title {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 31px;
+  color: #1F1E25;
+}
+
+.amount-value {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 31px;
+  color: #1F1E25;
+  margin-bottom: 0;
+}
+
+.amount-subtitle {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  color: #394959;
+  margin: 0;
 }

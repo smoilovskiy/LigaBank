@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Fragment } from "react";
 import RenderCreditParams from './view/renderCreditParams';
+// import RefDemo from './refdemo';
 import './calculator.scss';
 
 function Calculator() {
@@ -62,10 +63,13 @@ function Calculator() {
         <h3 className='calculator__title'>Кредитный калькулятор</h3>
         <p className='calculator__steps-text'>{step1}</p>
         {expanded === false ? creditSelect[0] : creditSelect[1]}
-        {creditType === creditTargetTitle ? null : creditType === mortgageCredit ? <RenderCreditParams param={0}/> : <RenderCreditParams param={1}/>}
-
+        {creditType === creditTargetTitle ? null : 
+        creditType === mortgageCredit ? 
+        <RenderCreditParams content={0}/> :
+        <RenderCreditParams content={1}/>}
+        
       </div>
-
+{/* <RefDemo /> */}
     </Fragment>
   );
 };
