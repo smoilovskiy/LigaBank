@@ -4,8 +4,7 @@ import '../calculator.scss';
 const CREDIT_COST_INIT = 2000000;
 const LOAN_TERMS_VALUE_MIN = 5;
 const LOAN_TERMS_VALUE_MAX = 30;
-const INITIAL_FEE_VALUE_MIN = 10;
-const INITIAL_FEE_VALUE_STEP = 5;
+const INITIAL_FEE_VALUE_MIN_PERCENT = 10;
 
 function RenderCreditParams(props) {
 
@@ -14,19 +13,33 @@ function RenderCreditParams(props) {
   const carCost = 'Стоимость автомобиля';
   const [creditCost, setCreditCost] = useState(CREDIT_COST_INIT);
   const [active, setApplyFormActive] = useState({ display: "none" });
-  const [initialFeeValue, setInitialFeeValue] = useState(10);
-  const [loanTermsValue, setLoanTermsValue] = useState(5);
 
+  const [initialFeeValue, setInitialFeeValue] = useState(creditCost / 10);
+  const [loanTermsValue, setLoanTermsValue] = useState(LOAN_TERMS_VALUE_MIN);
 
-  const handleInitialFeeChange = e => {
-    setInitialFeeValue(e.target.value);
-  };
+  const inputCreditCost = createRef();
+  const inputInitialFee = createRef();
+  const inputLoanTerms = createRef();
 
-  const handleLoanTermsChange = e => {
-    setLoanTermsValue(e.target.value);
-  };
+  function handleCreditCostInput() {
+    setCreditCost(+inputCreditCost.current.value)
+  }
 
-  let inputText = createRef();
+  function handleInitialFeeChange() {
+    setInitialFeeValue(+inputInitialFee.current.value)
+  }
+
+  function handleLoanTermsChange() {
+    setLoanTermsValue(+inputLoanTerms.current.value)
+  } 
+
+  function decreaseCreditCost() {
+    setCreditCost(creditCost - 100000)
+  }
+
+  function increaseCreditCost() {
+    setCreditCost(creditCost + 100000)
+  }
 
   function applyFormActive() {
     setApplyFormActive({ display: "block" })
@@ -41,60 +54,73 @@ function RenderCreditParams(props) {
   //   return false
   // }
 
-
-  function handleCreditCostInput() {
-    setCreditCost(+inputText.current.value)
-  }
-
-  console.log(creditCost)
-
-  function decreaseCreditCost() {
-    setCreditCost(creditCost - 100000)
-  }
-
-  function increaseCreditCost() {
-    setCreditCost(creditCost + 100000)
-  }
-
+  // let temp = creditCost * initialFeeValue / 100
 
   const creditParams = [
     <div className='mortgage-credit-params'>
       <p className='calculator__steps-text'>{step2}</p>
+
       <p className='credit-params-subtitle'>{realEstateCost}</p>
       <div className='credit-selector-condensed'>
         <img className='minus-img' src='./img/icon/minus.svg' alt='minus-img' onClick={decreaseCreditCost}></img>
         <div className='credit-cost-container'>
-          <input className='credit-cost' ref={inputText} value={creditCost} onChange={handleCreditCostInput} />
+          <input className='credit-cost' ref={inputCreditCost} value={creditCost} onChange={handleCreditCostInput} />
           <p className='credit-cost-currency'> рублей</p>
         </div>
         <img className='plus-img' src='./img/icon/plus.svg' alt='minus-img' onClick={increaseCreditCost}></img>
       </div>
       <p className='credit-cost-range'>От 1 200 000  до 25 000 000 рублей</p>
       <p className='credit-params-subtitle'>Первоначальный взнос</p>
-      <div className='credit-selector-condensed'>
+      <div className='initial-fee-container'>
+        <div className='credit-cost-container'>
+          <input className='credit-cost'
+            ref={inputInitialFee}
+            value={initialFeeValue}
+            // onChange={handleInitialFeeChange}
+            onChange={({ target: { value: inputInitialFee } }) => {
+              setInitialFeeValue(inputInitialFee);
+            }}
+          />
 
+          <p className='credit-cost-currency'> рублей</p>
+        </div>
       </div>
 
       <div className='range-slider-container'>
         <input
           type="range"
+          ref={inputInitialFee}
           className="range-slider"
-          min={INITIAL_FEE_VALUE_MIN}
-          step={INITIAL_FEE_VALUE_STEP}
-          // max={max}
+
+          min={creditCost / INITIAL_FEE_VALUE_MIN_PERCENT}
+          step={creditCost / 20}
+          max={creditCost}
           value={initialFeeValue}
           onChange={handleInitialFeeChange}
         />
-        <span className='range-slider-marker-min'>{INITIAL_FEE_VALUE_MIN} %</span>
-
+        <span className='range-slider-marker-min'>{INITIAL_FEE_VALUE_MIN_PERCENT} %</span>
       </div>
 
       <p className='credit-params-subtitle'>Срок кредитования</p>
-      <div className='credit-selector-condensed'>
 
+      <div className='initial-fee-container'>
+        <div className='credit-cost-container'>
+          <input
+            className='loan-terms'
+            ref={inputLoanTerms}
+            value={loanTermsValue}
+            onChange={({ target: { value: inputLoanTerms } }) => {
+              setLoanTermsValue(inputLoanTerms);
+            }}
+          />
+
+          <p className='loan-terms-years'> лет</p>
+        </div>
       </div>
+
       <div className='range-slider-container'>
         <input
+          ref={inputLoanTerms}
           type="range"
           className="range-slider"
           min={LOAN_TERMS_VALUE_MIN}
@@ -161,8 +187,8 @@ function RenderCreditParams(props) {
             </div>
             <div className='apply-form__data'>
               <p className='apply-form__data-title'>Первоначальный взнос</p>
-              <label className='apply-form__data-value'>{creditCost} рублей</label>
-              <input type="hidden" name='initial-fee' value={creditCost} />
+              <label className='apply-form__data-value'>{initialFeeValue} рублей</label>
+              <input type="hidden" name='initial-fee' value={initialFeeValue} />
             </div>
             <div className='apply-form__data'>
               <p className='apply-form__data-title'>Срок кредитования</p>
@@ -180,7 +206,6 @@ function RenderCreditParams(props) {
           </form>
         </div>
       </div>
-
     </div>
 
     ,
@@ -197,7 +222,6 @@ function RenderCreditParams(props) {
 
       </div>
     </div>
-
 
   ];
 

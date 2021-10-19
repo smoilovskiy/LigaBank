@@ -1,16 +1,30 @@
-// import { useState } from 'react';
+{/* <div>
+<div className='initial-fee-container'>
+<div className='credit-cost-container'>
+  <input 
+    className='credit-cost'
+    ref={inputInitialFee}
+    value={creditCost * initialFeeValue / 100}
+    onChange={({ target: { value: inputInitialFee } }) => {
+      setInitialFeeValue(inputInitialFee);
+    }}
+  />
 
-// function RefDemo() {
-//   const [input, setInput] = useState(''); // '' is the initial state value
-// console.log(input)
+  <p className='credit-cost-currency'> рублей</p>
+</div>
+</div>
 
-//   return (
-//     <div>
-//       <label>Please specify:</label>
-//       <input value={input} onInput={e => setInput(e.target.value)} />
-      
-//     </div>
-//   );
-// }
+<div className='range-slider-container'>
+<input
+  type="range"
+  className="range-slider"
+  min={INITIAL_FEE_VALUE_MIN}
+  step={INITIAL_FEE_VALUE_STEP}
+  value={creditCost * initialFeeValue / 100}
+  onChange={handleInitialFeeChange}
+/>
 
-// export default RefDemo;
+
+<span className='range-slider-marker-min'>{INITIAL_FEE_VALUE_MIN} %</span>
+
+</div> */}
