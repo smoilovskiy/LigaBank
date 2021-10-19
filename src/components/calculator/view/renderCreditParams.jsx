@@ -1,8 +1,11 @@
 import React, { useState, createRef } from 'react';
-
 import '../calculator.scss';
 
 const CREDIT_COST_INIT = 2000000;
+const LOAN_TERMS_VALUE_MIN = 5;
+const LOAN_TERMS_VALUE_MAX = 30;
+const INITIAL_FEE_VALUE_MIN = 10;
+const INITIAL_FEE_VALUE_STEP = 5;
 
 function RenderCreditParams(props) {
 
@@ -54,80 +57,59 @@ function RenderCreditParams(props) {
   }
 
 
-  // const [sliderProps, setSliderProps] = useState({
-  //   min: 0,
-  //   max: 100,
-  //   value: 20,
-  //   label: 'This is a reusable slider'
-  // });
-  // const [sliderValue, setSliderValue] = useState(0);
-
-  // const handleSliderChange = e => {
-  //   setSliderValue(e.target.value);
-  // };
-
-  // const handleMouseUp = e => {
-  //    // do something with sliderValue
-  // };
-
-
   const creditParams = [
     <div className='mortgage-credit-params'>
       <p className='calculator__steps-text'>{step2}</p>
       <p className='credit-params-subtitle'>{realEstateCost}</p>
       <div className='credit-selector-condensed'>
         <img className='minus-img' src='./img/icon/minus.svg' alt='minus-img' onClick={decreaseCreditCost}></img>
-        {/* {<p className='credit-cost'>{creditCost.toLocaleString('ru')} рублей</p>} */}
         <div className='credit-cost-container'>
-          {/* <input className='credit-cost' value={creditCost.toLocaleString('ru')}
-            onInput={e => setCreditCost(e.target.value)} /> */}
-
           <input className='credit-cost' ref={inputText} value={creditCost} onChange={handleCreditCostInput} />
-
           <p className='credit-cost-currency'> рублей</p>
         </div>
-
-
         <img className='plus-img' src='./img/icon/plus.svg' alt='minus-img' onClick={increaseCreditCost}></img>
       </div>
       <p className='credit-cost-range'>От 1 200 000  до 25 000 000 рублей</p>
-
       <p className='credit-params-subtitle'>Первоначальный взнос</p>
-
       <div className='credit-selector-condensed'>
 
       </div>
 
-      <input
-        type="range"
-        className="range-slider"
-        min={10}
-        step={5}
-        // max={max}
-        value={initialFeeValue}
-        onChange={handleInitialFeeChange}
-      />
+      <div className='range-slider-container'>
+        <input
+          type="range"
+          className="range-slider"
+          min={INITIAL_FEE_VALUE_MIN}
+          step={INITIAL_FEE_VALUE_STEP}
+          // max={max}
+          value={initialFeeValue}
+          onChange={handleInitialFeeChange}
+        />
+        <span className='range-slider-marker-min'>{INITIAL_FEE_VALUE_MIN} %</span>
+
+      </div>
 
       <p className='credit-params-subtitle'>Срок кредитования</p>
       <div className='credit-selector-condensed'>
 
       </div>
-
-      <input
-        type="range"
-        className="range-slider"
-        min={5}
-        max={30}
-        value={loanTermsValue}
-        onChange={handleLoanTermsChange}
-      />
+      <div className='range-slider-container'>
+        <input
+          type="range"
+          className="range-slider"
+          min={LOAN_TERMS_VALUE_MIN}
+          max={LOAN_TERMS_VALUE_MAX}
+          value={loanTermsValue}
+          onChange={handleLoanTermsChange}
+        />
+        <span className='range-slider-marker-min'>{LOAN_TERMS_VALUE_MIN} лет</span>
+        <span className='range-slider-marker-max'>{LOAN_TERMS_VALUE_MAX} лет</span>
+      </div>
 
       <div className='chekbox-container'>
         <input
           type="checkbox"
           className="credit-params-checkbox"
-        // min={min}
-        // max={max}
         // value={credit}
         // onChange={changeCallback}
         />
@@ -194,7 +176,7 @@ function RenderCreditParams(props) {
               <input className='apply-form__customer-email' type="mailto" name='customer-email' placeholder='E-mail' />
             </div>
 
-            <button type='submit' className='apply-form__submit-button' onClick>Отправить</button>
+            <button type='submit' className='apply-form__submit-button'>Отправить</button>
           </form>
         </div>
       </div>
