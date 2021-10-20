@@ -2,36 +2,43 @@ import React, { useState, createRef } from 'react';
 import '../calculator.scss';
 
 const CREDIT_COST_INIT = 2000000;
-const LOAN_TERMS_VALUE_MIN = 5;
-const LOAN_TERMS_VALUE_MAX = 30;
-const INITIAL_FEE_VALUE_MIN_PERCENT = 10;
+const MATERNAL_CAPITAL = 470000;
+const ORDER_NUMBER_INIT = 10;
+
 
 function RenderCreditParams(props) {
 
   const step2 = 'Шаг 2. Введите параметры кредита';
-  const realEstateCost = 'Стоимость недвижимости';
-  const carCost = 'Стоимость автомобиля';
+
   const [creditCost, setCreditCost] = useState(CREDIT_COST_INIT);
   const [active, setApplyFormActive] = useState({ display: "none" });
 
   const [initialFeeValue, setInitialFeeValue] = useState(creditCost / 10);
-  const [loanTermsValue, setLoanTermsValue] = useState(LOAN_TERMS_VALUE_MIN);
+  const [loanTermsValue, setLoanTermsValue] = useState(props.content.loanTermsValueMin);
+  const [interestRate, setInterestRate] = useState(props.content.interestRateInit);
 
   const inputCreditCost = createRef();
   const inputInitialFee = createRef();
   const inputLoanTerms = createRef();
 
+
   function handleCreditCostInput() {
     setCreditCost(+inputCreditCost.current.value)
   }
 
+  function useMaternalCapital(e) {
+    e.target.checked ? setCreditCost(creditCost - MATERNAL_CAPITAL) : setCreditCost(creditCost + MATERNAL_CAPITAL);
+  }
+
   function handleInitialFeeChange() {
+    initialFeeValue < 300000 ? setInterestRate(props.content.interestRateInit) : setInterestRate(props.content.interestRateMin);
     setInitialFeeValue(+inputInitialFee.current.value)
+
   }
 
   function handleLoanTermsChange() {
     setLoanTermsValue(+inputLoanTerms.current.value)
-  } 
+  }
 
   function decreaseCreditCost() {
     setCreditCost(creditCost - 100000)
@@ -45,22 +52,11 @@ function RenderCreditParams(props) {
     setApplyFormActive({ display: "block" })
   }
 
-  // function applyForm() {
-  //   alert([document.forms["apply-form"].elements["initial-fee"].value,
-  //   document.forms["apply-form"].elements["order-number"].value,
-  //   document.forms["apply-form"].elements["credit-target"].value])
-
-
-  //   return false
-  // }
-
-  // let temp = creditCost * initialFeeValue / 100
-
-  const creditParams = [
+  const creditParams =
     <div className='mortgage-credit-params'>
       <p className='calculator__steps-text'>{step2}</p>
 
-      <p className='credit-params-subtitle'>{realEstateCost}</p>
+      <p className='credit-params-subtitle'>{props.content.creditCostTitle}</p>
       <div className='credit-selector-condensed'>
         <img className='minus-img' src='./img/icon/minus.svg' alt='minus-img' onClick={decreaseCreditCost}></img>
         <div className='credit-cost-container'>
@@ -69,14 +65,13 @@ function RenderCreditParams(props) {
         </div>
         <img className='plus-img' src='./img/icon/plus.svg' alt='minus-img' onClick={increaseCreditCost}></img>
       </div>
-      <p className='credit-cost-range'>От 1 200 000  до 25 000 000 рублей</p>
+      <p className='credit-cost-range'>От {props.content.creditCostMin.toLocaleString('ru')}  до {props.content.creditCostMax.toLocaleString('ru')} рублей</p>
       <p className='credit-params-subtitle'>Первоначальный взнос</p>
       <div className='initial-fee-container'>
         <div className='credit-cost-container'>
           <input className='credit-cost'
             ref={inputInitialFee}
             value={initialFeeValue}
-            // onChange={handleInitialFeeChange}
             onChange={({ target: { value: inputInitialFee } }) => {
               setInitialFeeValue(inputInitialFee);
             }}
@@ -92,13 +87,13 @@ function RenderCreditParams(props) {
           ref={inputInitialFee}
           className="range-slider"
 
-          min={creditCost / INITIAL_FEE_VALUE_MIN_PERCENT}
+          min={creditCost / props.content.initialFeeValueMinPercent}
           step={creditCost / 20}
           max={creditCost}
           value={initialFeeValue}
           onChange={handleInitialFeeChange}
         />
-        <span className='range-slider-marker-min'>{INITIAL_FEE_VALUE_MIN_PERCENT} %</span>
+        <span className='range-slider-marker-min'>{props.content.initialFeeValueMinPercent} %</span>
       </div>
 
       <p className='credit-params-subtitle'>Срок кредитования</p>
@@ -123,21 +118,20 @@ function RenderCreditParams(props) {
           ref={inputLoanTerms}
           type="range"
           className="range-slider"
-          min={LOAN_TERMS_VALUE_MIN}
-          max={LOAN_TERMS_VALUE_MAX}
+          min={props.content.loanTermsValueMin}
+          max={props.content.loanTermsValueMax}
           value={loanTermsValue}
           onChange={handleLoanTermsChange}
         />
-        <span className='range-slider-marker-min'>{LOAN_TERMS_VALUE_MIN} лет</span>
-        <span className='range-slider-marker-max'>{LOAN_TERMS_VALUE_MAX} лет</span>
+        <span className='range-slider-marker-min'>{props.content.loanTermsValueMin} лет</span>
+        <span className='range-slider-marker-max'>{props.content.loanTermsValueMax} лет</span>
       </div>
 
       <div className='chekbox-container'>
         <input
           type="checkbox"
           className="credit-params-checkbox"
-        // value={credit}
-        // onChange={changeCallback}
+          onChange={useMaternalCapital}
         />
         <p className="checkbox-container-text">Использовать материнский капитал</p>
       </div>
@@ -147,13 +141,13 @@ function RenderCreditParams(props) {
           <div className='our-offer__inner-left'>
             <p className='our-offer__title'>Наше предложение</p>
             <p className='amount-value'>{creditCost.toLocaleString('ru')} рублей</p>
-            <p className='amount-subtitle'>Сумма ипотеки</p>
+            <p className='amount-subtitle'>Сумма кредита</p>
             <p className='amount-value'>{(creditCost / 5).toLocaleString('ru')} рублей</p>
             <p className='amount-subtitle'>Ежемесячный платеж</p>
           </div>
 
           <div className='our-offer__inner-right'>
-            <p className='amount-value'>{initialFeeValue} %</p>
+            <p className='amount-value'>{interestRate} %</p>
             <p className='amount-subtitle'>Процентная ставка</p>
             <p className='amount-value'>{(creditCost / 40).toLocaleString('ru')} рублей</p>
             <p className='amount-subtitle'>Необходимый доход</p>
@@ -172,22 +166,22 @@ function RenderCreditParams(props) {
           <form id='apply-form'>
             <div className='apply-form__data'>
               <p className='apply-form__data-title'>Номер заявки</p>
-              <label className='apply-form__data-value'>{creditCost}</label>
-              <input type="hidden" name='order-number' value={creditCost / 1000} />
+              <label className='apply-form__data-value'>{`№ 00${ORDER_NUMBER_INIT}`}</label>
+              <input type="hidden" name='order-number' value={ORDER_NUMBER_INIT} />
             </div>
             <div className='apply-form__data'>
               <p className='apply-form__data-title'>Цель кредита</p>
-              <label className='apply-form__data-value'>{creditCost}</label>
-              <input type="hidden" name='credit-target' value={creditCost / 56} />
+              <label className='apply-form__data-value'>{props.content.targetCredit}</label>
+              <input type="hidden" name='credit-target' value={props.content.targetCredit} />
             </div>
             <div className='apply-form__data'>
-              <p className='apply-form__data-title'>Стоимость недвижимости</p>
-              <label className='apply-form__data-value'>{creditCost} рублей</label>
+              <p className='apply-form__data-title'>{props.content.creditCostTitle}</p>
+              <label className='apply-form__data-value'>{creditCost.toLocaleString('ru')} рублей</label>
               <input type="hidden" name='credit-cost' value={creditCost} />
             </div>
             <div className='apply-form__data'>
               <p className='apply-form__data-title'>Первоначальный взнос</p>
-              <label className='apply-form__data-value'>{initialFeeValue} рублей</label>
+              <label className='apply-form__data-value'>{initialFeeValue.toLocaleString('ru')} рублей</label>
               <input type="hidden" name='initial-fee' value={initialFeeValue} />
             </div>
             <div className='apply-form__data'>
@@ -208,24 +202,7 @@ function RenderCreditParams(props) {
       </div>
     </div>
 
-    ,
-    <div className='car-credit-params'>
-      <p className='calculator__steps-text'>{step2}</p>
-      <p className='credit-params-subtitle'>{carCost}</p>
-      <div className='credit-selector-condensed'>
-        <img className='minus-img' src='./img/icon/minus.svg' alt='minus-img' onClick={decreaseCreditCost}></img>
-        <p className='credit-cost'>{creditCost.toLocaleString('ru')} рублей</p>
-        <img className='plus-img' src='./img/icon/plus.svg' alt='minus-img' onClick={increaseCreditCost}></img>
-      </div>
-
-      <div className='our-offer'>
-
-      </div>
-    </div>
-
-  ];
-
-  return creditParams[props.content]
+  return creditParams
 }
 
 export default RenderCreditParams

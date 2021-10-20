@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Fragment } from "react";
 import RenderCreditParams from './view/renderCreditParams';
-// import RefDemo from './refdemo';
 import './calculator.scss';
 
 function Calculator() {
@@ -28,6 +27,31 @@ function Calculator() {
     setExpanded(!expanded)
     setCreditType(carCredit);
   }
+
+  const creditInitialValues = [
+    {
+      creditCostTitle: 'Стоимость недвижимости',
+      targetCredit: 'Ипотека',
+      creditCostMin: 1200000,
+      creditCostMax: 25000000,
+      loanTermsValueMin: 5,
+      loanTermsValueMax: 30, 
+      initialFeeValueMinPercent: 10,
+      interestRateInit: 9.4, 
+      interestRateMin: 8.5,
+    }, 
+    {
+      creditCostTitle: 'Стоимость автомобиля',
+      targetCredit: 'Автомобиль',
+      creditCostMin: 500000,
+      creditCostMax: 5000000,
+      loanTermsValueMin: 1,
+      loanTermsValueMax: 5, 
+      initialFeeValueMinPercent: 20,
+      interestRateInit: 16, 
+      interestRateMin: 15, 
+    }
+  ] 
 
   const creditSelect = [
     <div className='credit-selector-condensed'>
@@ -65,8 +89,8 @@ function Calculator() {
         {expanded === false ? creditSelect[0] : creditSelect[1]}
         {creditType === creditTargetTitle ? null : 
         creditType === mortgageCredit ? 
-        <RenderCreditParams content={0}/> :
-        <RenderCreditParams content={1}/>}
+        <RenderCreditParams content={creditInitialValues[0]}/> :
+        <RenderCreditParams content={creditInitialValues[1]}/>}
         
       </div>
 {/* <RefDemo /> */}
