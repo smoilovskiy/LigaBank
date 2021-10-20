@@ -8,8 +8,6 @@ const ORDER_NUMBER_INIT = 10;
 
 function RenderCreditParams(props) {
 
-  const step2 = 'Шаг 2. Введите параметры кредита';
-
   const [creditCost, setCreditCost] = useState(CREDIT_COST_INIT);
   const [active, setApplyFormActive] = useState({ display: "none" });
 
@@ -54,7 +52,7 @@ function RenderCreditParams(props) {
 
   const creditParams =
     <div className='mortgage-credit-params'>
-      <p className='calculator__steps-text'>{step2}</p>
+      <p className='calculator__steps-text'>Шаг 2. Введите параметры кредита</p>
 
       <p className='credit-params-subtitle'>{props.content.creditCostTitle}</p>
       <div className='credit-selector-condensed'>
