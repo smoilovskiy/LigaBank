@@ -35,40 +35,38 @@ function Calculator() {
       creditCostMin: 1200000,
       creditCostMax: 25000000,
       loanTermsValueMin: 5,
-      loanTermsValueMax: 30, 
+      loanTermsValueMax: 30,
       initialFeeValueMinPercent: 10,
-      interestRateInit: 9.4, 
+      interestRateInit: 9.4,
       interestRateMin: 8.5,
-    }, 
+    },
     {
       creditCostTitle: 'Стоимость автомобиля',
       targetCredit: 'Автомобиль',
       creditCostMin: 500000,
       creditCostMax: 5000000,
       loanTermsValueMin: 1,
-      loanTermsValueMax: 5, 
+      loanTermsValueMax: 5,
       initialFeeValueMinPercent: 20,
-      interestRateInit: 16, 
-      interestRateMin: 15, 
+      interestRateInit: 16,
+      interestRateMin: 15,
     }
-  ] 
+  ]
 
   const creditSelect = [
-    <div className='credit-selector-condensed'>
+    <div className='credit-selector-condensed' onClick={handlerExpandMenu}>
       <p className='credit-selector__title'>{creditType}</p>
       <img className='credit-selector__arrow'
         src='./img/icon/arrow-down.svg'
-        alt='credit-selector-arrow'
-        onClick={handlerExpandMenu} >
+        alt='credit-selector-arrow'>
       </img>
     </div>,
-    <div className='credit-selector-expanded-container'>
+    <div className='credit-selector-expanded-container' onClick={handlerExpandMenu}>
       <div className='credit-selector-expanded'>
         <p className='credit-selector__title'>{creditType}</p>
         <img className='credit-selector__arrow'
           src='./img/icon/arrow-up.svg'
-          alt='credit-selector-arrow'
-          onClick={handlerExpandMenu} >
+          alt='credit-selector-arrow'>
         </img>
       </div>
       <div className='mortgage-credit-lending' onClick={handlerMortgageCredit}>
@@ -87,13 +85,13 @@ function Calculator() {
         <h3 className='calculator__title'>Кредитный калькулятор</h3>
         <p className='calculator__steps-text'>{step1}</p>
         {expanded === false ? creditSelect[0] : creditSelect[1]}
-        {creditType === creditTargetTitle ? null : 
-        creditType === mortgageCredit ? 
-        <RenderCreditParams content={creditInitialValues[0]}/> :
-        <RenderCreditParams content={creditInitialValues[1]}/>}
-        
+        {creditType === creditTargetTitle ? null :
+          creditType === mortgageCredit ?
+            <RenderCreditParams content={creditInitialValues[0]} /> :
+            <RenderCreditParams content={creditInitialValues[1]} />}
+
       </div>
-{/* <RefDemo /> */}
+      {/* <RefDemo /> */}
     </Fragment>
   );
 };

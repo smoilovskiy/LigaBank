@@ -53,6 +53,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 8px;
+  cursor: pointer;
 }
 
 .credit-selector__title {
@@ -89,6 +90,18 @@
   border: 1px solid #1F1E25;
   border-radius: 4px;
   display: block;
+  cursor: pointer;
+}
+
+.credit-cost-container-wrapper {
+  width: 600px;
+  height: 60px;
+  border: 1px solid #1F1E25;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
 }
 
 .credit-selector-expanded {

@@ -55,7 +55,7 @@ function RenderCreditParams(props) {
       <p className='calculator__steps-text'>Шаг 2. Введите параметры кредита</p>
 
       <p className='credit-params-subtitle'>{props.content.creditCostTitle}</p>
-      <div className='credit-selector-condensed'>
+      <div className='credit-cost-container-wrapper'>
         <img className='minus-img' src='./img/icon/minus.svg' alt='minus-img' onClick={decreaseCreditCost}></img>
         <div className='credit-cost-container'>
           <input className='credit-cost' ref={inputCreditCost} value={creditCost} onChange={handleCreditCostInput} />
